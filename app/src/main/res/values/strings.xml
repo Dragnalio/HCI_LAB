@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Cook Cook</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="logo">Logo</string>
+    <string name="fullname">Full Name</string>
+    <string name="backward">Backward</string>
+    <string name="forward">Forward</string>
+    <string name="welcome">Welcome,&#160;</string>
+    <string name="description_title">Cook Cook App</string>
+    <string name="description">Recipe app for everyone</string>
+    <string name="home">Home</string>
+    <string name="recipe">Recipe</string>
+    <string name="logout">Logout</string>
+    <string name="register_prompt">Don\'t have an account?&#160;</string>
+    <string name="login_prompt">Have an account?&#160;</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+</resources>

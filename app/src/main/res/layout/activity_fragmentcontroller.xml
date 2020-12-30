@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentControllerActivity">
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/fragmentcontroller_bnv_navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#FFF"
+        app:menu="@menu/bottomnavmenu" />
+
+    <fragment
+        android:id="@+id/fragmentcontroller_fragment_manager"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@id/fragmentcontroller_bnv_navbar"
+        android:layout_alignParentTop="true"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/bottomnavbar" />
+</RelativeLayout>
