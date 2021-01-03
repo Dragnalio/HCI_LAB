@@ -11,44 +11,48 @@
         android:id="@+id/home_tv_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="18sp"
+        android:layout_marginBottom="18dp"
         android:text="@string/welcome"
         android:textColor="@android:color/black"
         android:textSize="22sp"
         android:textStyle="bold" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:layout_height="300dp" >
+
+        <ViewFlipper
+            android:id="@+id/home_vf_carousel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:scaleType="centerCrop"/>
 
         <ImageView
             android:id="@+id/home_iv_backarrow"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
+            android:layout_alignParentStart="true"
+            android:scaleType="centerInside"
             android:contentDescription="@string/backward"
+            android:background="#22000000"
             android:src="@drawable/ic_baseline_arrow_backward_24" />
-
-        <ViewFlipper
-            android:id="@+id/home_vf_carousel"
-            android:layout_width="0dp"
-            android:layout_height="300dp"
-            android:layout_weight="2" />
 
         <ImageView
             android:id="@+id/home_iv_forwardarrow"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
+            android:layout_alignParentEnd="true"
             android:contentDescription="@string/forward"
+            android:background="#22000000"
             android:src="@drawable/ic_baseline_arrow_forward_24" />
-    </LinearLayout>
+    </RelativeLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="12sp"
+        android:layout_marginVertical="12dp"
         android:text="@string/description_title"
         android:textColor="@android:color/black"
         android:textSize="18sp" />

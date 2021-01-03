@@ -21,20 +21,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // manage vectors
-        User.addUser(new User("Admin", "admin", "admin"));
-        User.addUser(new User("Andi", "admin1", "admin"));
-        User.addUser(new User("Anto", "admin2", "admin"));
-
         // imageviews
         ivLogo = findViewById(R.id.login_iv_logo);
 
         // edittexts
         etUsername = findViewById(R.id.login_et_username);
         etPassword = findViewById(R.id.login_et_password);
-
-        etUsername.setText("admin");
-        etPassword.setText("admin");
 
         // buttons
         btnSubmit = findViewById(R.id.login_btn_login);

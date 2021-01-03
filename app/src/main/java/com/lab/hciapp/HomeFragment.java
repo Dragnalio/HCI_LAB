@@ -39,6 +39,13 @@ public class HomeFragment extends Fragment {
         carouselImages.add(R.drawable.image2);
         carouselImages.add(R.drawable.image3);
         carouselImages.add(R.drawable.image4);
+        carouselImages.add(R.drawable.image5);
+        carouselImages.add(R.drawable.image6);
+        carouselImages.add(R.drawable.image7);
+        carouselImages.add(R.drawable.image8);
+        carouselImages.add(R.drawable.image9);
+        carouselImages.add(R.drawable.image10);
+        carouselImages.add(R.drawable.image11);
 
         // view management
         tvWelcome = view.findViewById(R.id.home_tv_welcome);

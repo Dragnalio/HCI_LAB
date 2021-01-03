@@ -34,10 +34,6 @@ public class RegisterActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.register_et_username);
         etPassword = findViewById(R.id.register_et_password);
 
-        etFullname.setText("admin");
-        etUsername.setText("admin123");
-        etPassword.setText("admin");
-
         // buttons
         btnRegister = findViewById(R.id.register_btn_register);
         btnRegister.setOnClickListener(v -> btnRegisterPressed());

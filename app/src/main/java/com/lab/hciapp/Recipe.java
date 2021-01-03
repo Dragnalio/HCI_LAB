@@ -5,14 +5,15 @@ import java.util.Vector;
 public class Recipe {
 
     public static Vector<Recipe> recipes = new Vector<>();
-    public static int recipeIndex = -1;
+    public static Recipe recipe;
 
-    private String name, description;
+    private String name, description, instructions;
     private int image;
 
-    public Recipe(String name, String description, int image) {
+    public Recipe(String name, String description, String instructions, int image) {
         this.name = name;
         this.description = description;
+        this.instructions = instructions;
         this.image = image;
     }
 
@@ -30,6 +31,14 @@ public class Recipe {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getInstructions() {
+        return instructions;
+    }
+
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
     }
 
     public int getImage() {
