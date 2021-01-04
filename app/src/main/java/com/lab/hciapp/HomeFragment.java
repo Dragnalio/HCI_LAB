@@ -53,7 +53,7 @@ public class HomeFragment extends Fragment {
             vfCarousel.setInAnimation(view.getContext(), R.anim.slide_in_right);
             vfCarousel.setOutAnimation(view.getContext(), R.anim.slide_out_left);
             vfCarousel.setAutoStart(true);
-        }
+    }
 
         // get intent data
         if (User.userIndex >= 0) {
