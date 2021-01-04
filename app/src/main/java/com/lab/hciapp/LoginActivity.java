@@ -8,13 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity {
 
     ImageView ivLogo;
     EditText etUsername, etPassword;
     Button btnSubmit, btnRegister;
+    TextView tvError;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,9 @@ public class LoginActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.login_et_username);
         etPassword = findViewById(R.id.login_et_password);
 
+        // textviews
+        tvError = findViewById(R.id.login_tv_error);
+
         // buttons
         btnSubmit = findViewById(R.id.login_btn_login);
         btnSubmit.setOnClickListener(v -> btnLoginPressed());
@@ -38,22 +42,15 @@ public class LoginActivity extends AppCompatActivity {
 
     // login action
     public void btnLoginPressed() {
-        boolean valid = true;
+        String error = "";
+        tvError.setVisibility(View.GONE);
 
         String username = etUsername.getText().toString();
-        if (username.length() <= 0) {
-            valid = false;
-            makeToast(getString(R.string.username) + " must be filled");
-        }
-
         String password = etPassword.getText().toString();
-        if (password.length() <= 0) {
-            valid = false;
-            makeToast(getString(R.string.password) + " must be filled");
-        }
-
-        if (!valid) {
-            // empty input detected
+        if (username.length() <= 0 || password.length() <= 0) {
+            error = getString(R.string.emptyfields);
+            tvError.setText(error);
+            tvError.setVisibility(View.VISIBLE);
             return;
         }
 
@@ -67,7 +64,9 @@ public class LoginActivity extends AppCompatActivity {
 
         if (User.userIndex < 0) {
             // invalid login credentials
-            makeToast("Invalid login credentials");
+            error = "Username or password is incorrect";
+            tvError.setText(error);
+            tvError.setVisibility(View.VISIBLE);
             return;
         }
 
@@ -80,9 +79,5 @@ public class LoginActivity extends AppCompatActivity {
     public void btnRegisterPressed() {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
-    }
-
-    void makeToast(String text) {
-        Toast.makeText(this,  text, Toast.LENGTH_SHORT).show();
     }
 }

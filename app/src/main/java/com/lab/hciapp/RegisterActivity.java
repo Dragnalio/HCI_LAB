@@ -4,20 +4,20 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 public class RegisterActivity extends AppCompatActivity {
 
     ImageView ivLogo;
     EditText etFullname, etUsername, etPassword;
     Button btnRegister, btnLogin;
+    TextView tvError;
 
     Context context = this;
 
@@ -34,6 +34,9 @@ public class RegisterActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.register_et_username);
         etPassword = findViewById(R.id.register_et_password);
 
+        // textviews
+        tvError = findViewById(R.id.register_tv_error);
+
         // buttons
         btnRegister = findViewById(R.id.register_btn_register);
         btnRegister.setOnClickListener(v -> btnRegisterPressed());
@@ -44,28 +47,21 @@ public class RegisterActivity extends AppCompatActivity {
 
     // register action
     public void btnRegisterPressed() {
-        boolean valid = true;
+        String error = "";
+        tvError.setVisibility(View.GONE);
 
         String fullName = etFullname.getText().toString();
-        if (fullName.length() <= 0) {
-            valid = false;
-            makeToast(getString(R.string.fullname) + " must be filled");
-        }
-
         String username = etUsername.getText().toString();
-        if (username.length() <= 0) {
-            valid = false;
-            makeToast(getString(R.string.username) + " must be filled");
-        }
-
         String password = etPassword.getText().toString();
-        if (password.length() <= 0) {
-            valid = false;
-            makeToast(getString(R.string.password) + " must be filled");
-        }
-
-        if (!valid) {
-            // empty input detected
+        if (fullName.length() <= 0 || username.length() <= 0 || password.length() <= 0) {
+            error = getString(R.string.emptyfields);
+            tvError.setText(error);
+            tvError.setVisibility(View.VISIBLE);
+            return;
+        } else if (username.length() < 6 || password.length() < 6) {
+            error = "Username and password length must be at least 6 character";
+            tvError.setText(error);
+            tvError.setVisibility(View.VISIBLE);
             return;
         }
 
@@ -79,7 +75,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         if (User.userIndex >= 0) {
             // duplicate username
-            makeToast("This username is taken");
+            error = "This username is taken";
+            tvError.setText(error);
+            tvError.setVisibility(View.VISIBLE);
             return;
         }
 
@@ -108,9 +106,5 @@ public class RegisterActivity extends AppCompatActivity {
     public void btnLoginPressed() {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
-    }
-
-    void makeToast(String text) {
-        Toast.makeText(this,  text, Toast.LENGTH_SHORT).show();
     }
 }
