@@ -7,7 +7,6 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,8 +32,7 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        if (getSupportActionBar() != null)
-        {
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
@@ -52,7 +50,7 @@ public class DetailActivity extends AppCompatActivity {
         fragments.add(new DescriptionFragment());
         fragments.add(new InstructionFragment());
 
-        if(tabs.isEmpty()){
+        if (tabs.isEmpty()) {
             tabs.add("Description");
             tabs.add("Instructions");
         }

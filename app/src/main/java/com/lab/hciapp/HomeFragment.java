@@ -1,6 +1,5 @@
 package com.lab.hciapp;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,7 +19,6 @@ public class HomeFragment extends Fragment {
 
     TextView tvWelcome;
     ViewFlipper vfCarousel;
-    ImageView ivBackwardArrow, ivForwardArrow;
 
     Vector<Integer> carouselImages;
     User user;
@@ -35,49 +33,13 @@ public class HomeFragment extends Fragment {
 
         // vector management
         carouselImages = new Vector<>();
-        carouselImages.add(R.drawable.image1);
-        carouselImages.add(R.drawable.image2);
-        carouselImages.add(R.drawable.image3);
-        carouselImages.add(R.drawable.image4);
-        carouselImages.add(R.drawable.image5);
-        carouselImages.add(R.drawable.image6);
-        carouselImages.add(R.drawable.image7);
-        carouselImages.add(R.drawable.image8);
-        carouselImages.add(R.drawable.image9);
-        carouselImages.add(R.drawable.image10);
-        carouselImages.add(R.drawable.image11);
+        for (Recipe recipe : Recipe.recipes) {
+            carouselImages.add(recipe.getImage());
+        }
 
         // view management
         tvWelcome = view.findViewById(R.id.home_tv_welcome);
         vfCarousel = view.findViewById(R.id.home_vf_carousel);
-
-        ivBackwardArrow = view.findViewById(R.id.home_iv_backarrow);
-        ivBackwardArrow.setOnClickListener(v -> {
-            vfCarousel.stopFlipping();
-
-            vfCarousel.setInAnimation(view.getContext(), R.anim.slide_in_left);
-            vfCarousel.setOutAnimation(view.getContext(), R.anim.slide_out_right);
-
-            vfCarousel.showPrevious();
-
-            vfCarousel.stopFlipping();
-
-            vfCarousel.startFlipping();
-
-            vfCarousel.setInAnimation(view.getContext(), R.anim.slide_in_right);
-            vfCarousel.setOutAnimation(view.getContext(), R.anim.slide_out_left);
-        });
-
-        ivForwardArrow = view.findViewById(R.id.home_iv_forwardarrow);
-        ivForwardArrow.setOnClickListener(v -> {
-            vfCarousel.stopFlipping();
-
-            vfCarousel.showNext();
-
-            vfCarousel.stopFlipping();
-
-            vfCarousel.startFlipping();
-        });
 
         for (Integer image: carouselImages) {
             ImageView imageView = new ImageView(view.getContext());
@@ -88,10 +50,9 @@ public class HomeFragment extends Fragment {
 
             //auto rotate slider
             vfCarousel.setFlipInterval(5000);
-            vfCarousel.setAutoStart(true);
-
             vfCarousel.setInAnimation(view.getContext(), R.anim.slide_in_right);
             vfCarousel.setOutAnimation(view.getContext(), R.anim.slide_out_left);
+            vfCarousel.setAutoStart(true);
         }
 
         // get intent data

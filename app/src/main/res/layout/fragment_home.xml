@@ -27,26 +27,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:scaleType="centerCrop"/>
-
-        <ImageView
-            android:id="@+id/home_iv_backarrow"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:scaleType="centerInside"
-            android:contentDescription="@string/backward"
-            android:background="#22000000"
-            android:src="@drawable/ic_baseline_arrow_backward_24" />
-
-        <ImageView
-            android:id="@+id/home_iv_forwardarrow"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:contentDescription="@string/forward"
-            android:background="#22000000"
-            android:src="@drawable/ic_baseline_arrow_forward_24" />
+            android:scaleType="centerCrop" />
     </RelativeLayout>
 
     <TextView
